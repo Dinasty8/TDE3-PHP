@@ -8,9 +8,9 @@ class ControladorCore {
     private $currentProd;
 
 
-    private $produtos = array(
-        ['quantidade' =>"5",'nome'=>'Sumidouro de palheta','imagem' =>"guitar.jpg",'imagem2' =>"./vi2.png",'descricao'=>"Sumidouro de palheta Marca X 1889 EXCLUSIVO! Só tem esse, compre logo que vai acabar!","precoant"=>"5099,94","preco"=>"849,99","desconto"=>"500" ],
-        ['quantidade' =>"5",'nome'=>'Smartphone top dos top!','imagem' =>"./smartphone.jpg",'imagem2' =>"./smartphone.jpg",'descricao'=>"Smartphone top dos top!","precoant"=>"10.300,00","preco"=>" 8999,99","desconto"=>"300"],
+    public $produtos = array(
+        ['quantidade' =>"5",'nome'=>'Sumidouro de palheta','imagem' =>"guitar.jpg",'imagem2' =>"vi2.png",'descricao'=>"Sumidouro de palheta Marca X 1889 EXCLUSIVO! Só tem esse, compre logo que vai acabar!","precoant"=>"5099,94","preco"=>"849,99","desconto"=>"500" ],
+        ['quantidade' =>"5",'nome'=>'Smartphone top dos top!','imagem' =>"smartphone.jpg",'imagem2' =>"smartphone.jpg",'descricao'=>"Smartphone top dos top!","precoant"=>"10.300,00","preco"=>" 8999,99","desconto"=>"300"]
     );
 
     public function __construct() {
@@ -40,7 +40,7 @@ class ControladorCore {
     }
 
     protected function getProduto() {
-        return $this->produtos[$this->currentProd];
+        return $this->produtos[$this->currentProd-1];
     }
 
     
@@ -56,18 +56,25 @@ class ControladorCore {
     protected function addItemCarrinho(){ 
 
         // $_SESSION['cart'] = $produtos;
-        $idProduto = $this->getCurrentProd();
+        $idProduto = $this->getCurrentProd()-1;
+        $produto =$this->produtos[$idProduto];
+
+        echo $this->currentProd;
+        echo $idProduto;
     
-        if (isset($this->produtos[$idProduto])){
+        if ($this->currentProd && $produto){
             if (isset($_SESSION['cart'][$idProduto])){
                 $_SESSION['cart'][$idProduto]['quantidade']++;
+                $this->setCurrentProd(-1);
             } else {
                 $_SESSION['cart'][$idProduto] = array(
                     "quantidade"=>1,
-                    'nome'=>$produtos[$idProduto]['nome'],
-                    'descricao'=>$produtos[$idProduto]['descricao'],
-                    'preco'=>$produtos[$idProduto]['preco']
+                    'nome'=>$produto['nome'],
+                    'descricao'=>$produto['descricao'],
+                    'preco'=>$produto['preco'],
+                    'imagem'=>$produto['imagem']
                 );
+                $this->setCurrentProd(-1);
             }
         }
     }

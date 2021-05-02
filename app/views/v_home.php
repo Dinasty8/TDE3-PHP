@@ -11,7 +11,7 @@
             <h5 class="card-title mb-0">R$ 849,99</h5>
             <small>ou 12x de R$ 119,00 com muito juros</small>
             
-            <p class="mt-3 float-right"><a href="<?=BASE_URL."/produto?id=0"?>" class="btn btn-sm btn-primary">Já quero!</a></p>
+            <p class="mt-3 float-right"><a href="<?=BASE_URL."/produto?id=1"?>" class="btn btn-sm btn-primary">Já quero!</a></p>
         </div>
     </div>
 </div>
@@ -26,7 +26,7 @@
             <h5 class="card-title mb-0">R$ 8999,99</h5>
             <small>ou 12x de R$ 999,99 com muito juros</small>
             
-            <p class="mt-3 float-right"><a href="<?=BASE_URL."/produto?id=1"?>" class="btn btn-sm btn-primary">Já quero!</a></p>
+            <p class="mt-3 float-right"><a href="<?=BASE_URL."/produto?id=2"?>" class="btn btn-sm btn-primary">Já quero!</a></p>
         </div>
     </div>
 </div>

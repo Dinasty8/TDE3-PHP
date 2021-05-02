@@ -19,15 +19,15 @@
                     </tr>
                 </thead>
                 <tbody>
+              
 <?php 
-    echo $produtos;
     foreach ($_SESSION['cart'] as $key => $value) {?>
         <tr>
         <td class="text-center d-sm-block d-none">
-            <img src="<?=$produtos[$idProduto]['nome']?>" alt="prod" width="150px" class="img-thumbnail">
+            <img src="<?=PATH_ASSETS_IMG.$value['imagem'];?>"  width="150px" class="img-thumbnail">
         </td>
         <td style="width:50%">
-        <?php echo($dadosView['produto']['descricao']);?>
+        <?=$value['descricao']?>
         </td>
         <td style="width:10%">
             <form action="<?=BASE_URL."/nova-qtd-produto/url-produto"?>" method="POST">

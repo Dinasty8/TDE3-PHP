@@ -2,12 +2,12 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="#">Home</a></li>
-            <li class="breadcrumb-item">Nome Produto</li>
+            <li class="breadcrumb-item"><?php echo($dadosView["produto"]->getNome());?></li>
         </ol>
     </nav>
 </section>
 <section class="col-12">
-    <h3><?php echo($dadosView["produto"]->getNome());?></h3>
+    <h3><?php echo($dadosView["produto"]->getDescricao());?></h3>
     <div class="row">
     
         <div class="col-sm-8">

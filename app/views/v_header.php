@@ -33,7 +33,7 @@
                         <div class="col-sm-1 mt-3 text-center">
                             <a href="#">
                                 <a href="<?=BASE_URL."/carrinho"?>"><img src="<?=BASE_URL."/assets/img/shopping-cart.svg"?>" alt="Carrinho" width="50px"></a>
-                                <p class="p-0 m-0"><span class="badge badge-pill badge-success">0</span></p>
+                                <p class="p-0 m-0"><span class="badge badge-pill badge-success"><?=$_SESSION['cart'][0]['quantidade']+$_SESSION['cart'][1]['quantidade'];?></span></p>
                             </a>
                         </div>
                         <div class="col-12">

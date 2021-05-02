@@ -21,7 +21,8 @@
                 <tbody>
               
 <?php 
-    foreach ($_SESSION['cart'] as $key => $value) {?>
+    foreach ($_SESSION['cart'] as $key => $value)
+    {?>
         <tr>
         <td class="text-center d-sm-block d-none">
             <img src="<?=PATH_ASSETS_IMG.$value['imagem'];?>"  width="150px" class="img-thumbnail">
@@ -48,7 +49,7 @@
     </table>
 <div class="card bg-light">
     <div class="card-body text-right">
-        <h5 class="card-title mb-0"><strong>Total</strong> (10 itens)</h5>
+        <h5 class="card-title mb-0"><strong>Total</strong>(<?=$value['quantidade']?>)</h5>
         <p class="card-text text-muted"><small>(Em até 12x de R$ 119,00 com muito juros)</small></p>
         <a href="<?=BASE_URL?>" class="btn btn-success">Continuar</a>
         <p class="card-text text-muted"><small>Tem cupom ou vale compra? Você poderá utilizá-lo na etapa de pagamento</small></p>

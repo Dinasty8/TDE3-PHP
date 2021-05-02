@@ -2,12 +2,6 @@
 namespace App\Models;
 
 class Produtos {
-    public $produtos = array(
-        ['quantidade' =>"5",'nome'=>'Sumidouro de palheta','imagem' =>"guitar.jpg",'imagem2' =>"vi2.png",
-        'descricao'=>"Sumidouro de palheta Marca X 1889 EXCLUSIVO! Só tem esse, compre logo que vai acabar!","precoant"=>"5099,94","preco"=>"849,99","desconto"=>"500" ],
-        ['quantidade' =>"5",'nome'=>'Smartphone top dos top!','imagem' =>"smartphone.jpg",'imagem2' =>"smartphone.jpg",'descricao'=>"Smartphone top dos top!","precoant"=>"10.300,00","preco"=>" 8999,99","desconto"=>"300"]
-    );
-
     private string $nome;
     private string $descricao;
     private string $imagem;

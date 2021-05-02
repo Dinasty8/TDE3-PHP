@@ -7,17 +7,17 @@
     </nav>
 </section>
 <section class="col-12">
-    <h3><?php echo($dadosView["produto"]['descricao']);?></h3>
+    <h3><?php echo($dadosView["produto"]->getNome());?></h3>
     <div class="row">
     
         <div class="col-sm-8">
             <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img class="d-block w-100" src="<?=PATH_ASSETS_IMG.$dadosView["produto"]['imagem']?>" alt="First slide">
+                        <img class="d-block w-100" src="<?=PATH_ASSETS_IMG.$dadosView["produto"]->getImagem()?>" alt="First slide">
                     </div>
                     <div class="carousel-item">
-                        <img class="d-block w-100" src="<?=PATH_ASSETS_IMG.$dadosView["produto"]['imagem2']?>" alt="Second slide">
+                        <img class="d-block w-100" src="<?=PATH_ASSETS_IMG.$dadosView["produto"]->getImagem2()?>" alt="Second slide">
                     </div>
                 </div>
                 <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
@@ -34,12 +34,12 @@
             <div class="card col-12 p-0">
                 <div class="card-body">
                     <p class="card-text">Vendido e entregue por <small><strong class="text-primary">MEU E-COMMERCE</strong></p></small>
-                    <small>de R$ <?php echo($dadosView["produto"]['precoant']);?></small>
-                    <h5 class="card-title"><small>por </small>R$ <?php echo($dadosView["produto"]['preco']);?><small> à vista <span class="text-success">(<?php echo($dadosView["produto"]['desconto']);?>% de desconto)</span></small></h5>
+                    <small>de R$ <?php echo($dadosView["produto"]->getPrecoant());?></small>
+                    <h5 class="card-title"><small>por </small>R$ <?php echo($dadosView["produto"]->getPreco());?><small> à vista <span class="text-success">(<?php echo($dadosView["produto"]->getDesconto());?>% de desconto)</span></small></h5>
                     <small>ou 12x de R$ 119,00 com muito juros</small>
                     
                     <p class="mt-3 mb-0"><a href="#">Mais formas de pagamento</a></p>
-                    <p class="mt-3 mb-0 text-center"><a href="<?=BASE_URL."/carrinho"?>" class="btn-block btn btn-success">Adicionar ao carrinho</a></p>
+                    <p class="mt-3 mb-0 text-center"><a href="<?=BASE_URL."/carrinho?id=".$dadosView['idProduto'] ?>" class="btn-block btn btn-success">Adicionar ao carrinho</a></p>
                     <p class="mt-3 mb-0"><a href="#">Consultar prazo e valor do frete</a></p>
                 </div>
             </div>

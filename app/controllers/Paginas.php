@@ -16,24 +16,32 @@ class Paginas extends ControladorCore {
         $this->carregarPagina("v_home");
     }
 
-    public function produto() {    
+    public function produto() {
+        $idProduto = -1;   
         if(isset($_GET['id'])){
             //vamos adicionar ao carrinho
-            $this->setCurrentProd($_GET['id']);
+            $idProduto = $_GET['id'];
         }
 
         $this->addTituloPagina("Página Produto");
         
-        $produto = $this->getProduto();
+        $produto = $this->getProduto($idProduto);
         $this->addDadosPagina('produto', $produto);
+        $this->addDadosPagina('idProduto', $idProduto);
 
         $this->carregarPagina("v_produto");
     }
 
     public function carrinho() {
+        $idProduto = -1;   
+        if(isset($_GET['id'])){
+            //vamos adicionar ao carrinho
+            $idProduto = $_GET['id'];
+        }
+
         $this->addTituloPagina("Página Carrinho");
        
-        $this->addItemCarrinho();
+        $this->addItemCarrinho($idProduto);
         $this->carregarPagina("v_carrinho");
     }
 

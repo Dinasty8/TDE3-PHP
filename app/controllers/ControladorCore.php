@@ -1,24 +1,31 @@
 <?php
 namespace App\Controllers;
+use App\Models\Produtos;
 
 class ControladorCore {
 
     private $dadosView = array();
     private $limiteOciosidade = 3600; // segundos
-    private $currentProd;
-
-
-    public $produtos = array(
-        ['quantidade' =>"5",'nome'=>'Sumidouro de palheta','imagem' =>"guitar.jpg",'imagem2' =>"vi2.png",'descricao'=>"Sumidouro de palheta Marca X 1889 EXCLUSIVO! Só tem esse, compre logo que vai acabar!","precoant"=>"5099,94","preco"=>"849,99","desconto"=>"500" ],
-        ['quantidade' =>"5",'nome'=>'Smartphone top dos top!','imagem' =>"smartphone.jpg",'imagem2' =>"smartphone.jpg",'descricao'=>"Smartphone top dos top!","precoant"=>"10.300,00","preco"=>" 8999,99","desconto"=>"300"]
-    );
+    public $produtos =[];
 
     public function __construct() {
         $this->verificarOciosidade();
-     
+        $p1 = new Produtos (
+            'Sumidouro de palheta',
+            'Sumidouro de palheta Marca X 1889 EXCLUSIVO! Só tem esse, compre logo que vai acabar!',
+            'guitar.jpg','vi2.png','5099,94','5099,94','500','1'
+        );
+        $p2 = new Produtos (
+            'Smartphone top dos top!',
+            'Smartphone top dos top!',
+            'smartphone.jpg','smartphone.jpg','10.300,00','8999,99','300','1'
+        );
+        
+        $this->produtos = [$p1,$p2];
     }
 
     protected function carregarPagina($nomeView) {
+        
         $dadosView = $this->dadosView;
         require_once PATH_VIEW."v_header.php";
         require_once PATH_VIEW."$nomeView.php";
@@ -40,42 +47,33 @@ class ControladorCore {
         $this->dadosView['produtos'] = $this->produtos;
     }
 
-    protected function getProduto() {
-        return $this->produtos[$this->currentProd-1];
+    protected function getProduto($id) {
+        return $this->produtos[$id-1];
+    }
+    protected function getQtd() {
+        echo "oiiiii";
     }
 
+    protected function addItemCarrinho($id){ 
+        $idProduto = $id - 1;
+
+        if($idProduto >= 0) {
+            $produto =$this->produtos[$idProduto];
     
-    public function setCurrentProd($current) {
-        $this->currentProd = $current;
-        return $this;
-    }
-
-    public function getCurrentProd() {
-        return $this->currentProd || -1;
-    }
-
-    protected function addItemCarrinho(){ 
-
-        // $_SESSION['cart'] = $produtos;
-        $idProduto = $this->getCurrentProd()-1;
-        $produto =$this->produtos[$idProduto];
-
-        echo $this->currentProd;
-        echo $idProduto;
-    
-        if ($this->currentProd && $produto){
-            if (isset($_SESSION['cart'][$idProduto])){
-                $_SESSION['cart'][$idProduto]['quantidade']++;
-                $this->setCurrentProd(-1);
-            } else {
-                $_SESSION['cart'][$idProduto] = array(
-                    "quantidade"=>1,
-                    'nome'=>$produto['nome'],
-                    'descricao'=>$produto['descricao'],
-                    'preco'=>$produto['preco'],
-                    'imagem'=>$produto['imagem']
-                );
-                $this->setCurrentProd(-1);
+            if (isset($produto)){
+                if (isset($_SESSION['cart'][$idProduto])){
+                    $_SESSION['cart'][$idProduto]['quantidade']++;
+                    header("Location:".'carrinho');
+                } else {
+                    $_SESSION['cart'][$idProduto] = array(
+                        "quantidade"=>1,
+                        'nome'=>$produto->getNome(),
+                        'descricao'=>$produto->getDescricao(),
+                        'preco'=>$produto->getPreco(),
+                        'imagem'=>$produto->getImagem()
+                    );
+                    header("Location:".'carrinho');
+                }
             }
         }
     }

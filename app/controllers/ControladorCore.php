@@ -15,6 +15,7 @@ class ControladorCore {
 
     public function __construct() {
         $this->verificarOciosidade();
+     
     }
 
     protected function carregarPagina($nomeView) {

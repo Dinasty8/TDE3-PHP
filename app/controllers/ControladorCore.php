@@ -94,7 +94,6 @@ class ControladorCore {
 
                     $_SESSION['cart'][$idProduto] = array(
                         "quantidade"=>1,
-                        "qtd"=>29,
                         'nome'=>$produto->getNome(),
                         'descricao'=>$produto->getDescricao(),
                         'preco'=>$produto->getPreco(),

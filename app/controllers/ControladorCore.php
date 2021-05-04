@@ -60,7 +60,7 @@ class ControladorCore {
                 // echo "imprime soma da qtd dos item com id 1 e 2 ";
                 
             }
-        } if (isset($_SESSION['cart'][0]['quantidade']) && isset($_SESSION['cart'][1]['quantidade']) ){
+        } if (isset($_SESSION['cart'][0]['quantidade']) || isset($_SESSION['cart'][1]['quantidade']) ){
             
             if(!isset($_SESSION['cart'][1]['quantidade'])){
                 echo $_SESSION['cart'][0]['quantidade'];

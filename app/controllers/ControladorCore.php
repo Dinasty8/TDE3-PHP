@@ -51,7 +51,33 @@ class ControladorCore {
         return $this->produtos[$id-1];
     }
     protected function getQtd() {
-        echo "oiiiii";
+       
+      
+        if (isset($_SESSION['cart'][0]['quantidade']) && isset($_SESSION['cart'][1]['quantidade']) ){
+            
+            if ($_SESSION['cart'][1]['quantidade'] != NULL && $_SESSION['cart'][1]['quantidade'] != NULL ){
+                echo $_SESSION['cart'][0]['quantidade']+$_SESSION['cart'][1]['quantidade']; 
+                // echo "imprime soma da qtd dos item com id 1 e 2 ";
+                
+            }
+        } if (isset($_SESSION['cart'][0]['quantidade']) && isset($_SESSION['cart'][1]['quantidade']) ){
+            
+            if(!isset($_SESSION['cart'][1]['quantidade'])){
+                echo $_SESSION['cart'][0]['quantidade'];
+                // echo ": qtd id 0";
+            }
+            else if(!isset($_SESSION['cart'][0]['quantidade'])){
+                echo $_SESSION['cart'][1]['quantidade'];
+                // echo ": qtd id 1";
+            }
+                
+        }
+        
+        else{
+            echo "0";
+        }
+           
+           
     }
 
     protected function addItemCarrinho($id){ 

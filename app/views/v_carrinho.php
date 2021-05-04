@@ -49,7 +49,7 @@
     </table>
 <div class="card bg-light">
     <div class="card-body text-right">
-        <h5 class="card-title mb-0"><strong>Total</strong>( <?=$_SESSION['cart'][0]['quantidade']+$_SESSION['cart'][1]['quantidade'];?>)</h5>
+        <h5 class="card-title mb-0"><strong>Total</strong>( <?=$this->getQtd();?>)</h5>
         <p class="card-text text-muted"><small>(Em até 12x de R$ 119,00 com muito juros)</small></p>
         <a href="<?=BASE_URL?>" class="btn btn-success">Continuar</a>
         <p class="card-text text-muted"><small>Tem cupom ou vale compra? Você poderá utilizá-lo na etapa de pagamento</small></p>
